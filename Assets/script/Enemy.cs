@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
     private float StartTime;
     public int damage;
 
+    public bool isMoving;
     public float AttackSpeed = 2;
     public float attackdistance = 2;
 
@@ -22,12 +24,21 @@ public class Enemy : MonoBehaviour
 
         }
 
+public void startMove(){
+    isMoving = true;
+}
+public void endMove(){
+    isMoving = false;
+}
 
     void Update()
     {
-
-        transform.Translate((PlayerControl.main.transform.position - transform.position).normalized * speed * Time.deltaTime, Space.World);
         animator.SetBool("isMoving", true);
+        if(isMoving){
+            transform.Translate((PlayerControl.main.transform.position - transform.position).normalized * speed * Time.deltaTime, Space.World);
+        }
+        
+
         if (Vector2.Distance(transform.position, PlayerControl.main.transform.position) < attackdistance && Time.time - StartTime > AttackSpeed)
         {
             PlayerControl.main.TakeDamage(damage);
@@ -42,6 +53,13 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            PlayerControl.main.xp+=15;
         }
+        
     }
+
+private void HandleXpChanged(int newXP)
+{
+        // чёта делаем
+}
 }

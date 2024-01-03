@@ -1,0 +1,16 @@
+{ "skeleton": { "images": "C:/Users/Дмитрий/Documents/GitHub/InfiniteTower/Assets/Textures/images/" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "Слой 1", "bone": "root", "attachment": "Слой 1" }
+],
+"skins": {
+	"default": {
+		"Слой 1": {
+			"Слой 1": { "x": 121.5, "y": -99, "width": 155, "height": 160 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

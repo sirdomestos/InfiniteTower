@@ -52,5 +52,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "Infinite Tower.sln"
+    "dotnet.defaultSolution": "InfiniteTower.sln"
 }
