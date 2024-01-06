@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position, Color.red, 2);
+            /*Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position, Color.red, 2);*/
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position, distance, whatIsSolid);
             if (hitInfo.collider != null)
             {

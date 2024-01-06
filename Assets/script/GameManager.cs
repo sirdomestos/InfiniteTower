@@ -11,10 +11,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        foreach (Enemy enemy in currentDff.enemies){
-            //создаем что, где, поворот
-            Instantiate(enemy, new Vector3(Random.Range(-5,5),Random.Range(-3,3),0), Quaternion.identity);
-        }
         heroes[SelectedHero].gameObject.SetActive(true);
     }
 

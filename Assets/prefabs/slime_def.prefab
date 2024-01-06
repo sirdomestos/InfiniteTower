@@ -90,7 +90,7 @@ MonoBehaviour:
   damage: 2
   isMoving: 0
   AttackSpeed: 2
-  attackdistance: 10
+  attackdistance: 2
   speed: 2
 --- !u!95 &8266843153043168896
 Animator:

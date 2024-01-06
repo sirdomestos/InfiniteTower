@@ -6,6 +6,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
+    private EnemySpawner spawner;
+
+
     public int health;
     public int own_damage;
 
@@ -21,6 +24,7 @@ public class Enemy : MonoBehaviour
         {
 
             animator = GetComponent<Animator>();
+            spawner = GetComponentInParent<EnemySpawner>();
 
         }
 
@@ -52,10 +56,10 @@ public void endMove(){
         health -= damage;
         if (health <= 0)
         {
+            spawner.enemies.Remove(gameObject);
             Destroy(gameObject);
             PlayerControl.main.xp+=15;
         }
-        
     }
 
 private void HandleXpChanged(int newXP)
