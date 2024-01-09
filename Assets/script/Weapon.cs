@@ -1,26 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
+using System.Diagnostics;
+//using System.Numerics;
 using UnityEngine;
-
-public class Weapon : MonoBehaviour
+using System.Security.Cryptography;
+/*
+delegate void ActionDelegate();
+public class WeaponLogic 
 {
+    public static ActionDelegate action;
     public int damage;
     public float distance;
     public LayerMask whatIsSolid;
 
-    private void Update()
+    
+    public float timeAttack;
+    public float startTimeAttack;
+    public void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+    }
+    public void Update()
+    {
+        // ��� ��� �������� ������, �� ���� �� ��������������, �� shotPoint ��������� ��������
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        Vector3 target = new Vector3(0, 0, Mathf.LerpAngle(transform.localEulerAngles.z, Mathf.Clamp(rotz - 90, -45, 45), 3 * Time.deltaTime));
+        transform.localEulerAngles = target;
         {
-            /*Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position, Color.red, 2);*/
-            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position, distance, whatIsSolid);
-            if (hitInfo.collider != null)
+            if (timeAttack <= 0)
             {
-                if (hitInfo.collider.tag == "Enemy")
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+
+                    action();
+                    timeAttack = startTimeAttack;
                 }
+            }
+            else
+            {
+                timeAttack -= Time.deltaTime;
+            }
+        }
+    }
+}
+*/
+
+
+
+
+public abstract class Weapon : MonoBehaviour
+{
+    public int damage;
+    public float distance;
+
+
+    public float timeAttack;
+    public float startTimeAttack;
+    public abstract void Attack();
+
+    public virtual void Start()
+    {
+    }
+    public void Update()
+    {
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        Vector3 target = new Vector3(0, 0, Mathf.LerpAngle(transform.localEulerAngles.z, Mathf.Clamp(rotz - 90, -45, 45), 3 * Time.deltaTime));
+        transform.localEulerAngles = target;
+        {
+            if (timeAttack <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Attack();
+                    timeAttack = startTimeAttack;
+                }
+            }
+            else
+            {
+                timeAttack -= Time.deltaTime;
             }
         }
     }

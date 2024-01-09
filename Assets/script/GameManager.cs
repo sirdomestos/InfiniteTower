@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public DifficultObject currentDff;
 
-    void Start()
+    void Awake()
     {
         heroes[SelectedHero].gameObject.SetActive(true);
     }

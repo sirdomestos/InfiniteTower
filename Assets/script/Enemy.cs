@@ -61,9 +61,4 @@ public void endMove(){
             PlayerControl.main.xp+=15;
         }
     }
-
-private void HandleXpChanged(int newXP)
-{
-        // чёта делаем
-}
 }

@@ -20,7 +20,17 @@ public class PlayerControl : MonoBehaviour
     public static int maxHealth = 85;
 
     public int startdamage = 15;
-    public int health = maxHealth;
+    public int health{
+        get{
+        return hp;
+    }
+    set{
+        hp = value;
+        onHPchange?.Invoke(value);
+    }
+    }
+
+    private int hp = maxHealth;
     public int exp = 0;
 
 #region LvL
@@ -57,7 +67,7 @@ public class PlayerControl : MonoBehaviour
     public void LvlUp()
     {
         lvl ++;
-        maxHealth += 15;
+        health += 15;
         startdamage += 5;
         onLVLchange?.Invoke(lvl);
     }
@@ -65,6 +75,7 @@ public class PlayerControl : MonoBehaviour
 
     public Action<int> onXPchange;
     public Action<int> onLVLchange;
+    public Action<int> onHPchange;
 
     public int lvl = 0;
     public Sprite HeadFront;
@@ -84,7 +95,7 @@ public class PlayerControl : MonoBehaviour
     private bool isDash = false;
     private Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

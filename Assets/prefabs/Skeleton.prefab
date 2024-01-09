@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 6561834535553178942}
   - component: {fileID: 2030613831371346270}
   - component: {fileID: 515212032907963178}
+  - component: {fileID: 8314848375677906398}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -518,6 +519,26 @@ MonoBehaviour:
   AttackSpeed: 1
   attackdistance: 10
   speed: 1
+--- !u!95 &8314848375677906398
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170900172714339073}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8087053701558096932
 GameObject:
   m_ObjectHideFlags: 0
